@@ -1,0 +1,7 @@
+br/com/mobitbrasil/interview/db/CrudService.class
+br/com/mobitbrasil/interview/services/App.class
+br/com/mobitbrasil/interview/WebApplication.class
+br/com/mobitbrasil/interview/model/Agenda.class
+br/com/mobitbrasil/interview/model/Contato.class
+br/com/mobitbrasil/interview/db/Model.class
+br/com/mobitbrasil/interview/services/AgendaService.class
