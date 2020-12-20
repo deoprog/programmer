@@ -21,8 +21,6 @@ public class Agenda implements Serializable {
     @Column(length = 100)
     private String titulo;
 
-    private String descricao;
-
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "agenda_id")
     private List<Contato> contato;

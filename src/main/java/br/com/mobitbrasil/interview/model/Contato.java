@@ -16,14 +16,23 @@ public class Contato implements Serializable {
 
     @Id
     @SequenceGenerator(name = "seq_contato", sequenceName = "seq_contato", allocationSize = 1)
-    @GeneratedValue(generator = "seq_contato", strategy =GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "seq_contato", strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(length = 100)
     private String nome;
 
+    @Column(length = 100)
+    private String sobreNome;
+    
+    @Column(length = 11)
+    private String cpf;
+    
     @Email
+    @Column(length = 100)
     private String email;
+    
+    private Endereco endereco;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Agenda agenda;
