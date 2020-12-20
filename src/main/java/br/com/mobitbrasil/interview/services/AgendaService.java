@@ -33,6 +33,6 @@ public class AgendaService {
 
         val agenda = agendaBean.findById(id);
 
-        return Response.ok(agenda.toString()).build();
+        return Response.ok(agenda.toString()).build(); 
     }
 }
