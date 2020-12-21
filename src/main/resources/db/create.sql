@@ -17,7 +17,6 @@ CREATE TABLE if not exists public.contatos (
                                                end_logradouro varchar(200),
                                                end_bairro varchar(100),
                                                end_cidade varchar(100),
-                                               end_numero varchar(100),
                                                end_cep NUMERIC(8),
                                                end_uf varchar(2),
                                                CONSTRAINT pk_contatos PRIMARY KEY (id),

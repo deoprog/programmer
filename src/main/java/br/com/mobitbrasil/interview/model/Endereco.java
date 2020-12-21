@@ -19,9 +19,6 @@ public class Endereco {
 	@Column(length = 100)
 	private String cidade;
 
-	@Column(length = 45)
-	private String numero;
-
 	@Max(value = 8, message = "Tamanho do cep maior que 8")
 	@Column(precision = 8)
 	private Integer cep;

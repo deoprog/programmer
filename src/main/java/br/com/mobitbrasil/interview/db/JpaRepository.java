@@ -1,13 +1,16 @@
 package br.com.mobitbrasil.interview.db;
 
+import lombok.val;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public abstract class JpaRepository<T> {
 
-    @PersistenceContext(name = "programmer")
+    @PersistenceContext(unitName = "programmer")
     private EntityManager em;
 
     private final Class<T> clazz;
@@ -16,27 +19,38 @@ public abstract class JpaRepository<T> {
         clazz = e;
     }
 
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public T save(T entity) {
         try {
-            this.em.persist(entity);
+            em.persist(entity);
         } catch (Exception e) {
             Logger.getLogger(JpaRepository.class.getName()).log(Level.SEVERE, null, e);
-            this.em.getTransaction().rollback();
+            em.getTransaction().rollback();
         }
+
         return entity;
     }
 
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public T update(T entity) {
+        try {
+            em.merge(entity);
+        } catch (Exception e) {
+            Logger.getLogger(JpaRepository.class.getName()).log(Level.SEVERE, null, e);
+            em.getTransaction().rollback();
+        }
+
         return entity;
     }
 
+    @Transactional(Transactional.TxType.REQUIRED)
     public void delete(Long id) {
-
+        em.remove(findById(id));
     }
 
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public T findById(Long id) {
-        System.err.println(clazz.getSimpleName() + " - " + id);
-        return this.em.find(clazz, id);
+        return em.find(clazz, id);
     }
 
     public EntityManager getManager() {

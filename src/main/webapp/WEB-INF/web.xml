@@ -6,8 +6,8 @@
 
     <display-name>REST API</display-name>
 
-    <resource-ref>
-        <res-ref-name>jdbc-programmer</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-    </resource-ref>
+<!--    <resource-ref>-->
+<!--        <res-ref-name>jdbc-programmer</res-ref-name>-->
+<!--        <res-type>javax.sql.DataSource</res-type>-->
+<!--    </resource-ref>-->
 </web-app>

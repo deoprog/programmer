@@ -7,10 +7,11 @@ import com.google.gson.GsonBuilder;
 public class JsonHelper {
 
     public static Gson gson = new GsonBuilder()
-        .setPrettyPrinting()
-        .disableHtmlEscaping()
-                .serializeNulls()
-                .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
-        .create();
+            .setPrettyPrinting()
+            .setFieldNamingStrategy(FieldNamingPolicy.LOWER_CASE_WITH_DASHES)
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .disableHtmlEscaping()
+            .serializeNulls()
+            .create();
 
 }
