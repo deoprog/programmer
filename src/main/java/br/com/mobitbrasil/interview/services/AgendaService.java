@@ -4,35 +4,35 @@ import br.com.mobitbrasil.interview.beans.AgendaBean;
 import lombok.val;
 
 import javax.ejb.EJB;
-import javax.websocket.server.PathParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+import static com.sun.mail.iap.Response.OK;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 
 @Path("/agenda")
-@Produces({APPLICATION_XML, APPLICATION_JSON})
 public class AgendaService {
 
     @EJB
-    AgendaBean agendaBean;
+    private AgendaBean agendaBean;
 
     @GET
-    @Produces(APPLICATION_JSON)
-    public Response status() {
+    public Response index() {
         return Response.ok("{descricao: \"teste\"}").build();
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces(APPLICATION_JSON)
-    public Response findById(@PathParam("id") Long id) {
+    @Consumes(APPLICATION_JSON)
+    public Response findById(@PathParam(value = "id") Long id) {
 
         val agenda = agendaBean.findById(id);
 
-        return Response.ok(agenda.toString()).build();
+        System.err.println(agenda);
+
+        return Response.status(OK).entity("{id: \"" + 1 + "\"}")
+                .type(APPLICATION_JSON)
+                .build();
     }
 }

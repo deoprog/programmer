@@ -7,4 +7,7 @@ import javax.ejb.Stateless;
 
 @Stateless
 public class AgendaBean extends JpaRepository<Agenda> {
+    protected AgendaBean() {
+        super(Agenda.class);
+    }
 }

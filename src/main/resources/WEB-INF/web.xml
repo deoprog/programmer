@@ -4,16 +4,10 @@
          metadata-complete="false"
          version="2.5">
 
-    <display-name>REST APi</display-name>
-    
-    <servlet>
-	    <servlet-name>Jersey RESTful</servlet-name>
-	    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <display-name>REST API</display-name>
 
-  	</servlet>
-  	
-  <servlet-mapping>
-    <servlet-name>Jersey RESTful</servlet-name>
-    <url-pattern>/*</url-pattern>
-  </servlet-mapping>
+    <resource-ref>
+        <res-ref-name>jdbc-programmer</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+    </resource-ref>
 </web-app>

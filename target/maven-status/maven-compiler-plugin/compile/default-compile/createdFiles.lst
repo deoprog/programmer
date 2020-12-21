@@ -1,7 +1,12 @@
-br/com/mobitbrasil/interview/db/CrudService.class
-br/com/mobitbrasil/interview/services/App.class
-br/com/mobitbrasil/interview/WebApplication.class
+br/com/mobitbrasil/interview/db/JpaRepository.class
 br/com/mobitbrasil/interview/model/Agenda.class
 br/com/mobitbrasil/interview/model/Contato.class
-br/com/mobitbrasil/interview/db/Model.class
+br/com/mobitbrasil/interview/services/ContatoService.class
+br/com/mobitbrasil/interview/services/AppService.class
+br/com/mobitbrasil/interview/enums/Uf.class
+br/com/mobitbrasil/interview/beans/AgendaBean.class
+br/com/mobitbrasil/interview/WebApplication.class
 br/com/mobitbrasil/interview/services/AgendaService.class
+br/com/mobitbrasil/interview/model/Telefone.class
+br/com/mobitbrasil/interview/model/Endereco.class
+br/com/mobitbrasil/interview/json/JsonHelper.class

@@ -1,5 +1,6 @@
 package br.com.mobitbrasil.interview.model;
 
+import br.com.mobitbrasil.interview.json.JsonHelper;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,4 +25,9 @@ public class Agenda implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "agenda_id")
     private List<Contato> contato;
+
+    @Override
+    public String toString() {
+        return JsonHelper.gson.toJson(this);
+    }
 }

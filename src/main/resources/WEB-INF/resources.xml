@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <Resource id="jdbc-programmer" aliases="jdbc-programmer" type="DataSource">
+        JdbcDriver org.postgresql.Driver
+        JdbcUrl jdbc:postgresql://localhost:5432/programmer
+        username postgres
+        password 01020304
+        ValidationQuery = SELECT 1
+        ValidationInterval = 30000
+        NumTestsPerEvictionRun = 5
+        TimeBetweenEvictionRuns = 30 seconds
+        TestWhileIdle = true
+        MaxActive = 200
+    </Resource>
+</resources>
