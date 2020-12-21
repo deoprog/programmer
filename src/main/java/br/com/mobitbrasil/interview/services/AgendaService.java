@@ -10,6 +10,9 @@ import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Path("/agenda")
@@ -22,7 +25,11 @@ public class AgendaService {
 
     @GET
     public Response index() {
-        return Response.ok("{descricao: \"teste\"}").build();
+        List<AgendaDTO> data = agendaBean.findAll().stream()
+                .map(AgendaDTO::new)
+                .collect(Collectors.toList());
+
+        return Response.ok(data).build();
     }
 
     @GET
@@ -36,6 +43,16 @@ public class AgendaService {
 
     @POST
     public Response save(@Valid AgendaDTO agenda) {
-        return Response.ok(agenda).build();
+        val result = agendaBean.save(agenda.toAgenda());
+        return Response.ok(result).build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam(value = "id") Long id) {
+
+        agendaBean.delete(id);
+
+        return Response.ok().build();
     }
 }

@@ -2,7 +2,9 @@ package br.com.mobitbrasil.interview.model;
 
 import br.com.mobitbrasil.interview.json.JsonHelper;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -13,18 +15,23 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "agendas")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonbPropertyOrder({"id", "titulo", "contatos"})
+@NamedQueries({
+        @NamedQuery(name = "Agenda.findAll", query = "SELECT e FROM Agenda e")
+})
 public class Agenda implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name = "seq_agenda", sequenceName = "seq_agenda", allocationSize = 1)
-    @GeneratedValue(generator = "seq_agenda", strategy =GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_agendas", sequenceName = "seq_agendas", allocationSize = 1)
+    @GeneratedValue(generator = "seq_agendas", strategy =GenerationType.SEQUENCE)
     private Long id;
 
     @NotNull(message = "Informe o título da agenda")

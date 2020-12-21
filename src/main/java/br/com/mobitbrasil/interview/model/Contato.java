@@ -21,8 +21,8 @@ public class Contato implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name = "seq_contato", sequenceName = "seq_contato", allocationSize = 1)
-    @GeneratedValue(generator = "seq_contato", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "seq_contatos", sequenceName = "seq_contatos", allocationSize = 1)
+    @GeneratedValue(generator = "seq_contatos", strategy = GenerationType.SEQUENCE)
     @Expose(serialize = false)
     private Long id;
 
