@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Server port="8080" shutdown="SHUTDOWN">
+<Server port="8085" shutdown="SHUTDOWN">
     <Listener className="org.apache.tomee.catalina.ServerListener"/>
     <Listener className="org.apache.catalina.security.SecurityListener"/>
 
