@@ -1,10 +1,9 @@
 package br.com.mobitbrasil.interview.db;
 
-import lombok.val;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,8 +48,8 @@ public abstract class JpaRepository<T> {
     }
 
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    public T findById(Long id) {
-        return em.find(clazz, id);
+    public Optional<T> findById(Long id) {
+        return Optional.ofNullable(em.find(clazz, id));
     }
 
     public EntityManager getManager() {

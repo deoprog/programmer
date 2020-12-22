@@ -4,7 +4,9 @@ import br.com.mobitbrasil.interview.json.JsonHelper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -13,9 +15,21 @@ import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "contatos")
+@NamedQueries({
+        @NamedQuery(
+                name = "Contato.findByIdAndAgendaId",
+                query = "SELECT e FROM Contato e WHERE e.agenda.id = :agendaId AND e.id = :id"
+        ),
+        @NamedQuery(
+                name = "Contato.findAllByAgendaId",
+                query = "SELECT e FROM Contato e WHERE e.agenda.id = :agendaId"
+        )
+})
 public class Contato implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,6 +68,9 @@ public class Contato implements Serializable {
     @JoinColumn(name = "contato_id")
     @Fetch(FetchMode.JOIN)
     private List<Telefone> telefones;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Agenda agenda;
 
     @Override
     public String toString() {

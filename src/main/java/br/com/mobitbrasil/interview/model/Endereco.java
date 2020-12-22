@@ -4,8 +4,12 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 
 import br.com.mobitbrasil.interview.enums.Uf;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Embeddable
 public class Endereco {

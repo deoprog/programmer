@@ -18,5 +18,4 @@ public class WebApplication extends Application {
         properties.put("jersey.config.server.disableMoxyJson", true);
         return properties;
     }
-
 }

@@ -2,12 +2,17 @@ package br.com.mobitbrasil.interview.model;
 
 import br.com.mobitbrasil.interview.json.JsonHelper;
 import com.google.gson.annotations.Expose;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "telefones")
@@ -21,7 +26,7 @@ public class Telefone implements Serializable {
     @Expose(serialize = false)
     private Long id;
 
-    @Max(value = 11, message = "Número maior que 11")
+    @NotNull(message = "Informe o número do contato")
     @Column(precision = 11)
     private Long numero;
 
